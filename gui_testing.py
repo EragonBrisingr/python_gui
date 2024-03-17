@@ -1,79 +1,48 @@
 from tkinter import *
-
+#creating the window
 window = Tk()
 
-window.geometry("400x200")
+window.geometry("400x400")
 
 window.title("GUI")
 
+cookies = 0
+#cookie function
+def cookie():
+    global cookies
+    cookies += 1
+    cookieNum.config(text="Number of cookies: " + str(cookies)) #important line to update the label
 
-greeting = Label(
-    text="Welcome to python gui!",
-    foreground="green",
-    background="black",
-    height=5,
-    width=20
-)
-greeting.pack()
-
-button = Button(
-    text="Click me for coins!",
+# cookie clicker
+heroBtn = Button(
+    window,
+    text = "Click me for cookies",
+    height=10,
     width=20,
-    height=5,
-    bg="red",
-    fg="white"
+    borderwidth=4,
+    bg = "lightblue",
+    command = cookie
 )
-button.pack()
+heroBtn.pack()
 
-
-
-# Button function
-def printButton():
-    input = entry.get()
-    lbl.config(text="Provided Input: " + input)
-
-# Label
-label = Label(window, text="Enter your name here (optional)")
-label.pack()
-
-# Text box
-entry = Entry(
+#display cookie number
+cookieNum = Label(
     window,
-    width=50,
-    borderwidth=1
+    text = "Number of cookies: " + str(cookies)
 )
-entry.pack()
+cookieNum.pack()
 
-# Button creation
-txtBtn = Button(
+
+
+#save button
+saveMe = Button(
     window,
-    text="Print",
-    command = printButton
+    height = 5,
+    width = 5,
+    borderwidth=2,
+    text="Save"#,
+    #command = save
 )
-txtBtn.pack()
-
-# Output label
-lbl = Label(
-    window,
-    text=""
-)
-lbl.pack()
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 window.mainloop()
-
-
-
-
