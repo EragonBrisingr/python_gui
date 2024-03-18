@@ -1,0 +1,4 @@
+Score for user 1 is: 9
+Score for user 1 is: 13
+Score for user 1 is: 58
+Score for user 1 is: 26

@@ -1,4 +1,6 @@
 from tkinter import *
+from savePage import SaveMe
+
 #creating the window
 window = Tk()
 
@@ -32,6 +34,13 @@ cookieNum = Label(
 )
 cookieNum.pack()
 
+#initiating the 2nd gui
+def save():
+    global cookies
+    sv = SaveMe(cookies)
+    sv.run()
+    cookies = 0
+
 
 
 #save button
@@ -40,9 +49,12 @@ saveMe = Button(
     height = 5,
     width = 5,
     borderwidth=2,
-    text="Save"#,
-    #command = save
+    text="Save",
+    command = save
 )
-
+saveMe.pack()
 
 window.mainloop()
+
+
+
