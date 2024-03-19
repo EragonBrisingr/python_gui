@@ -28,21 +28,36 @@ class SaveMe():
             height=10,
             width=20,
             text = "save",
-            command = self.svFile()
+            command = self.svFile
         )
         self.memo.pack()
 
     def entryN(self):
-        ent = Entry(
+        self.ent = Entry(
             self.win,
             text = "Your name"
         )
-        ent.pack()
+        self.ent.pack()
+
+    def errName(self):
+        err = Label(
+            self.win,
+            height = 3,
+            width = 5,
+            text = "Name taken, please enter another one"
+        )
+        err.pack()
 
     def svFile(self):
-
+        name = self.ent.get().lower()
         fileName = "scores.txt"
 
-        with open(fileName, 'a') as f:
-            f.write("Score for user 1 is: " + str(self.score) + '\n')
+        if(name not in fileName):
+            score = {
+                name: self.score
+            }
+            with open(fileName, 'a') as f:
+                f.write(str(score) + '\n', )
+        else: self.errName()
+
 

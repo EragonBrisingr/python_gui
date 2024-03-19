@@ -40,7 +40,7 @@ def save():
     sv = SaveMe(cookies)
     sv.run()
     cookies = 0
-
+    cookieNum.config(text="Number of cookies: " + str(cookies))
 
 
 #save button
