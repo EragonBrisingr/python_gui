@@ -1,5 +1,9 @@
-
-
-{'omar': 6}
-{'omar': 6}
-{'omar': 15}
+{
+    "omar": 4,
+    "tarek": 14,
+    "hamza": 14,
+    "mahmoud": 8,
+    "osama": 10,
+    "basel": 10,
+    "moth": 19
+}

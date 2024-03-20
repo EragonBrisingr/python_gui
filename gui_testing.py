@@ -1,5 +1,6 @@
 from tkinter import *
 from savePage import SaveMe
+from loadPage import LoadMe
 
 #creating the window
 window = Tk()
@@ -42,7 +43,6 @@ def save():
     cookies = 0
     cookieNum.config(text="Number of cookies: " + str(cookies))
 
-
 #save button
 saveMe = Button(
     window,
@@ -52,7 +52,24 @@ saveMe = Button(
     text="Save",
     command = save
 )
-saveMe.pack()
+saveMe.pack(padx = 5, pady = 5)
+
+def load():
+    ld = LoadMe()
+    ld.run()
+
+loadMe = Button(
+    window,
+    height = 5,
+    width = 5,
+    borderwidth=2,
+    text="Load",
+    command = load
+)
+loadMe.pack()
+
+
+
 
 window.mainloop()
 
