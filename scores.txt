@@ -5,5 +5,7 @@
     "mahmoud": 8,
     "osama": 10,
     "basel": 10,
-    "moth": 19
+    "moth": 19,
+    "osus": 24,
+    "rali": 25
 }

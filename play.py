@@ -55,7 +55,13 @@ saveMe = Button(
 saveMe.pack(padx = 5, pady = 5)
 
 def load():
-    ld = LoadMe()
+    global cookies
+    cookieNum.config(text="Number of cookies: " + str(ld.result))
+    cookies = ld.result
+
+ld = LoadMe(load)
+
+def loadFile():
     ld.run()
 
 loadMe = Button(
@@ -64,11 +70,9 @@ loadMe = Button(
     width = 5,
     borderwidth=2,
     text="Load",
-    command = load
+    command = loadFile
 )
 loadMe.pack()
-
-
 
 
 window.mainloop()
