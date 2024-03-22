@@ -47,7 +47,7 @@ class LoadMe():
         with open('scores.txt', 'r') as file:
                 # Load the existing scores into a dictionary
                 scores = json.load(file)
-        print(name)
+                
         if name in scores:
             self.result = scores[name]
             self.loadFn()

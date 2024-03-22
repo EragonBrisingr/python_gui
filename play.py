@@ -10,10 +10,15 @@ window.geometry("400x400")
 window.title("GUI")
 
 cookies = 0
+add = 1
+cost = 50
+
+
+
 #cookie function
 def cookie():
     global cookies
-    cookies += 1
+    cookies += add
     cookieNum.config(text="Number of cookies: " + str(cookies)) #important line to update the label
 
 # cookie clicker
@@ -35,7 +40,7 @@ cookieNum = Label(
 )
 cookieNum.pack()
 
-#initiating the 2nd gui
+#initiating the save gui
 def save():
     global cookies
     sv = SaveMe(cookies)
@@ -54,6 +59,7 @@ saveMe = Button(
 )
 saveMe.pack(padx = 5, pady = 5)
 
+#function sent to LoadMe class
 def load():
     global cookies
     cookieNum.config(text="Number of cookies: " + str(ld.result))
@@ -73,6 +79,43 @@ loadMe = Button(
     command = loadFile
 )
 loadMe.pack()
+
+def moreCookies():
+    global add
+    global cost
+    global cookies
+    if(cookies>=cost):
+        cookies-=cost
+        
+        add += add
+        cost+=cost
+
+incCookies = Button(
+    window,
+    text="double cc",
+    bg = "cyan",
+    command = moreCookies
+)
+incCookies.pack()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 window.mainloop()

@@ -50,16 +50,42 @@ class SaveMe():
         self.ent.pack()
 
     def errName(self):
-        if self.err is None:
-            self.err = Label(
-                self.win,
-                height = 3,
-                width = 30,
-                text = "Name taken, please enter another one"
-            )
-            self.err.pack()
-        else:
-            self.clearError()
+
+        confirm = Tk()
+        confirm.geometry("200x200")
+        confirm.title("Confirm")
+
+        ask = Label(
+            confirm,
+            text = "Name taken, override data?"
+        )
+        ask.pack()
+
+        def delFn():
+            self.scores[self.name] = self.score
+            with open('scores.txt', 'w') as file:
+                # Write the updated dictionary back to the file as JSON
+                json.dump(self.scores, file, indent=4)
+            confirm.destroy()
+            self.win.destroy()
+
+        yesBtn = Button(
+            confirm,
+            text = "yes",
+            bg = "lightblue",
+            command=delFn
+        )
+        yesBtn.pack()
+
+        noBtn = Button(
+            confirm,
+            text = "no",
+            bg = "lightblue",
+            command=self.svFile
+        )
+        noBtn.pack()
+
+
 
     def clearError(self):
         if self.err is not None:
@@ -68,24 +94,24 @@ class SaveMe():
             self.errName()
 
     def svFile(self):
-        name = self.ent.get().lower()
+        self.name = self.ent.get().lower()
 
         try:
             with open('scores.txt', 'r') as file:
                 # Load the existing scores into a dictionary
-                scores = json.load(file)
+                self.scores = json.load(file)
         except FileNotFoundError:
             # If the file doesn't exist, start with an empty dictionary
-            scores = {}
+            self.scores = {}
         except json.JSONDecodeError:
             # If the file is empty or contains invalid JSON, start fresh
-            scores = {}
+            self.scores = {}
 
-        if name not in scores:
-            scores[name] = self.score
+        if self.name not in self.scores:
+            self.scores[self.name] = self.score
             with open('scores.txt', 'w') as file:
                 # Write the updated dictionary back to the file as JSON
-                json.dump(scores, file, indent=4)
+                json.dump(self.scores, file, indent=4)
             self.win.destroy()
 
         else:
