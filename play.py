@@ -90,6 +90,8 @@ def moreCookies():
         add += add
         cost+=cost
 
+        cookieNum.config(text="Number of cookies: " + str(cookies))
+
 incCookies = Button(
     window,
     text="double cc",
