@@ -49,17 +49,9 @@ class LoadMe():
                 scores = json.load(file)
                 
         if name in scores:
-            self.result = scores[name]
+            self.cookiesClick = scores[name]['upgradeCookies']
+            self.score = scores[name]['score']
             self.loadFn()
             self.win.destroy()
         else: pass #add an error message
-
-
-
-
-
-
-
-
-
 

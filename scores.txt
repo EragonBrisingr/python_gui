@@ -9,5 +9,7 @@
     "osus": 24,
     "rali": 25,
     "moe": 29,
-    "wael": 45
+    "wael": 45,
+    "sanad": 89,
+    "adam": 144.5
 }

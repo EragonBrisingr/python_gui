@@ -19,7 +19,7 @@ cost = 50
 def cookie():
     global cookies
     cookies += add
-    cookieNum.config(text="Number of cookies: " + str(cookies)) #important line to update the label
+    cookieNum.config(text="Number of cookies: " + str(round(cookies))) #important line to update the label
 
 # cookie clicker
 heroBtn = Button(
@@ -33,20 +33,40 @@ heroBtn = Button(
 )
 heroBtn.pack()
 
+#more cookies per click
+def moreCookies():
+    global add
+    global cost
+    global cookies
+    if(cookies>=cost):
+        cookies-=cost
+        
+        add += add
+        cost*=1.3
+
+incCookies = Button(
+    window,
+    text="double cc",
+    bg = "cyan",
+    command = moreCookies
+)
+incCookies.pack()
+
 #display cookie number
 cookieNum = Label(
     window,
-    text = "Number of cookies: " + str(cookies)
+    text = "Number of cookies: " + str(round(cookies))
 )
 cookieNum.pack()
 
 #initiating the save gui
 def save():
     global cookies
-    sv = SaveMe(cookies)
+    global add
+    sv = SaveMe(cookies, add)
     sv.run()
     cookies = 0
-    cookieNum.config(text="Number of cookies: " + str(cookies))
+    cookieNum.config(text="Number of cookies: " + str(round(cookies)))
 
 #save button
 saveMe = Button(
@@ -62,8 +82,10 @@ saveMe.pack(padx = 5, pady = 5)
 #function sent to LoadMe class
 def load():
     global cookies
-    cookieNum.config(text="Number of cookies: " + str(ld.result))
-    cookies = ld.result
+    global add
+    cookieNum.config(text="Number of cookies: " + str(ld.score))
+    cookies = ld.score
+    add = ld.cookiesClick
 
 ld = LoadMe(load)
 
@@ -79,26 +101,6 @@ loadMe = Button(
     command = loadFile
 )
 loadMe.pack()
-
-def moreCookies():
-    global add
-    global cost
-    global cookies
-    if(cookies>=cost):
-        cookies-=cost
-        
-        add += add
-        cost+=cost
-
-incCookies = Button(
-    window,
-    text="double cc",
-    bg = "cyan",
-    command = moreCookies
-)
-incCookies.pack()
-
-
 
 
 
