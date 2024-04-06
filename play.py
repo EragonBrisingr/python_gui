@@ -103,6 +103,27 @@ loadMe = Button(
 loadMe.pack()
 
 
+def moreCookies():
+    global add
+    global cost
+    global cookies
+    if(cookies>=cost):
+        cookies-=cost
+        
+        add += add
+        cost+=cost
+
+        cookieNum.config(text="Number of cookies: " + str(cookies))
+
+incCookies = Button(
+    window,
+    text="double cc",
+    bg = "cyan",
+    command = moreCookies
+)
+incCookies.pack()
+
+
 
 
 
