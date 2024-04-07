@@ -29,7 +29,7 @@ class SaveMe():
     def showS(self):
         scr = Label(
             self.win,
-            width = 15,
+            width = 30,
             text = "Your score is: " + str(self.score)
         )
         scr.pack()
@@ -68,7 +68,7 @@ class SaveMe():
         ask.pack()
 
         def delFn():
-            self.scores[self.name] = self.score
+            self.scores[self.name] = {'score': self.score, 'upgradeCookies': self.upgradeCookies}
             with open('scores.txt', 'w') as file:
                 # Write the updated dictionary back to the file as JSON
                 json.dump(self.scores, file, indent=4)
@@ -111,10 +111,9 @@ class SaveMe():
             self.scores = {}
         except json.JSONDecodeError:
             # If the file is empty or contains invalid JSON, start fresh
-            self.scores = {}
-        self.upgrade1 = 1   
+            self.scores = {}   
         if self.name not in self.scores:
-            self.scores[self.name] = {'score': self.score, 'upgradeCookies': self.upgrade1}
+            self.scores[self.name] = {'score': self.score, 'upgradeCookies': self.upgradeCookies}
             with open('scores.txt', 'w') as file:
                 # Write the updated dictionary back to the file as JSON
                 json.dump(self.scores, file, indent=4)

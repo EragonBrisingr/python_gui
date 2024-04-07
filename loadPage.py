@@ -25,7 +25,7 @@ class LoadMe():
     def showS(self):
         scr = Label(
             self.win,
-            width = 15,
+            width = 30,
             text = "Your name"
         )
         scr.pack()
@@ -49,8 +49,8 @@ class LoadMe():
                 scores = json.load(file)
                 
         if name in scores:
-            self.cookiesClick = scores[name]['upgradeCookies']
-            self.score = scores[name]['score']
+            self.cookiesClick = round(scores[name]['upgradeCookies'])
+            self.score = round(scores[name]['score'])
             self.loadFn()
             self.win.destroy()
         else: pass #add an error message

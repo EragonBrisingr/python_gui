@@ -9,7 +9,7 @@ window.geometry("400x400")
 
 window.title("GUI")
 
-cookies = 0
+cookies :int = 0
 add = 1
 cost = 50
 
@@ -41,8 +41,9 @@ def moreCookies():
     if(cookies>=cost):
         cookies-=cost
         
-        add += add
+        add += 1
         cost*=1.3
+        cookieNum.config(text="Number of cookies: " + str(round(cookies)))
 
 incCookies = Button(
     window,
@@ -103,25 +104,6 @@ loadMe = Button(
 loadMe.pack()
 
 
-def moreCookies():
-    global add
-    global cost
-    global cookies
-    if(cookies>=cost):
-        cookies-=cost
-        
-        add += add
-        cost+=cost
-
-        cookieNum.config(text="Number of cookies: " + str(cookies))
-
-incCookies = Button(
-    window,
-    text="double cc",
-    bg = "cyan",
-    command = moreCookies
-)
-incCookies.pack()
 
 
 
