@@ -3,5 +3,9 @@
     "adan": {
         "score": 331.19849999999997,
         "upgradeCookies": 64
+    },
+    "hamza": {
+        "score": 124.84499999999997,
+        "upgradeCookies": 6
     }
 }
